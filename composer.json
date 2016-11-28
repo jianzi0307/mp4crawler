@@ -1,0 +1,14 @@
+{
+    "name": "jianzi0307/phpcrawler",
+    "description": "php crawler for http://kxjs.org.cn/",
+    "require": {
+        "jaeger/querylist": "^3.1",
+        "jaeger/querylist-ext-login": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "jianzi0307",
+            "email": "jianzi0307@gmail.com"
+        }
+    ]
+}
