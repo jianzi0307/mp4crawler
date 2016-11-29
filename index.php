@@ -1,38 +1,34 @@
 <?php
 /**
- * PHPÅÀ³æ
- * ÓÃÍ¾£º²É¼¯¡¶¿ÆÑ§½¡ÉíÓë½¡¿µ´Ù½ø×¨¼ÒÆ½Ì¨¡·ÉÏµÄ½¡ÉíÊÓÆµ×ÊÔ´
+ * PHPçˆ¬è™«
+ * ç”¨é€”ï¼šé‡‡é›†ã€Šç§‘å­¦å¥èº«ä¸Žå¥åº·ä¿ƒè¿›ä¸“å®¶å¹³å°ã€‹ä¸Šçš„å¥èº«è§†é¢‘èµ„æº
  * @author jianzi0307@icloud.com
  * @date 2016.11.29 00:02
  */
 require 'vendor/autoload.php';
 use QL\QueryList;
 
-//¸ùÄ¿Â¼
+//æ ¹ç›®å½•
 define('SCRIPT_ROOT', dirname(__FILE__) . '/');
-//cookie±£´æÎÄ¼þ
+//cookieä¿å­˜æ–‡ä»¶
 $cookieFile = SCRIPT_ROOT . 'cookie.tmp';
-//¿ÆÑ§½¡ÉíÓë½¡¿µ´Ù½ø×¨¼ÒÆ½Ì¨
+//ç§‘å­¦å¥èº«ä¸Žå¥åº·ä¿ƒè¿›ä¸“å®¶å¹³å°
 $baseUrl = 'http://kxjs.org.cn';
 $categories = ['1' => 1, '2' => 2, '3' => 1, '487870722' => 1, '734538812' => 1, '734539422' => 1, '532214197' => 1];
 
-//µÇÂ¼Ò³
-$loginUrl = $baseUrl . '/p/account/ajaxData/checkLogin.aspx';
-//À´Ô´
+//ç™»å½•é¡µ
+$loginUrl = $baseUrl . '/p/account/ajaxData/checkLogin.aspx?un=28831118&pw=abc123';
+//æ¥æº
 $refererUrl = $baseUrl . '/p/account/ajaxData/popLoginDialog.aspx';
 $login = QueryList::run('Login', [
     'target' => $loginUrl,
     'referrer' => $refererUrl,
     'method' => 'post',
-    //µÇÂ½±íµ¥ÐèÒªÌá½»µÄÊý¾Ý
-    'params' => ['un' => '28772016', 'pw' => 'jianzi0307'],
+    //ç™»é™†è¡¨å•éœ€è¦æäº¤çš„æ•°æ®
+    'params' => ['un' => '28831118', 'pw' => 'abc123'],
     'user_agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0',
     'cookiePath' => $cookieFile
 ]);
-//$d = $login->get('http://kxjs.org.cn/p/video/detail.aspx?id=202');
-//preg_match_all("/'file': '(\/upload.*mp4)/u",$d->html, $matches);
-//var_dump($matches);
-//die;
 $jsonCate = [];
 foreach ($categories as $key => $value) {
     $jsonCate[$key] = [];
@@ -54,15 +50,5 @@ foreach ($categories as $key => $value) {
 }
 file_put_contents('plist.txt', json_encode($jsonCate, JSON_UNESCAPED_UNICODE));
 
-//$ql = $login->get($baseUrl . '/p/video/list.aspx?category=1');
-//$data = $ql->setQuery([
-//    'imgUrl' => ['.videoImg img', 'src'],
-//    'title' => ['.videoInfo a', 'text'],
-//    'detail' => ['.videoInfo a', 'href']
-//])->data;
-////$ql = $login->get($baseUrl . '/p/video/detail.aspx?id=202');
-////$data = $ql->setQuery([])->data;
-//print_r($data);
-
-//É¾³ýcookieÎÄ¼þ
-//@ unlink($cookieFile);
+//åˆ é™¤cookieæ–‡ä»¶
+//@unlink($cookieFile);
