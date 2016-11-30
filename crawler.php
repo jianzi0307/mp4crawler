@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP爬虫
+ * PHP爬虫（已废弃）
  * 用途：采集《科学健身与健康促进专家平台》上的健身视频资源
  * 使用方法： php -f crawler.php
  * @author jian0307@icloud.com

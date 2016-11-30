@@ -4,7 +4,8 @@
     "require": {
         "jaeger/querylist": "^3.1",
         "jaeger/querylist-ext-login": "^1.0",
-        "jaeger/querylist-ext-multi": "^1.0"
+        "jaeger/querylist-ext-multi": "^1.0",
+        "beesperester/php-download": "^1.0"
     },
     "authors": [
         {
